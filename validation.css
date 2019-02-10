@@ -1,0 +1,37 @@
+body{
+    background-color: lightgreen;
+}
+
+.header{
+    background-color: green;
+    text-align: center right;
+    display: inline-flex;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    padding: 10px;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    display: inline-flex;
+}
+
+.form-frame{
+    position: absolute;
+    top: 60px;
+    padding: 10px;
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.info-form{
+
+}
