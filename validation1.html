@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Validation Form</title>
     <link rel="stylesheet" href="validation.css">
     <script src="validation1.js"></script>
 </head>
@@ -15,16 +15,28 @@
     <div class="form-frame">
         <div class="form-title">Validation Form</div>
         <form class="form-parent">
-            <div class="form-desc">*Name:</div>
-            <input type="text" class="form-item" placeholder="Robert">
-            <div class="form-desc">*Family Name:</div>
-            <input type="text" class="form-item" placeholder="Ross">
-            <div class="form-desc">*Gender:</div>
+            <div class="form-desc">
+                <p>*Name:</p>
+                <img src="correct.png" alt="OK" class="form-img" id="fname-i">
+            </div>
+            <input type="text" class="form-item" placeholder="Robert" id="fname-f">
+            <div class="form-desc">
+                <p>*Family Name:</p>
+                <img src="correct.png" alt="OK" class="form-img" id="lname-i">
+            </div>
+            <input type="text" class="form-item" placeholder="Ross" id="lname-f">
+            <div class="form-desc">
+                <p>*Gender:</p>
+                <img src="correct.png" alt="OK" class="form-img" id="gender-i">
+            </div>
             <select name="Gender" class="form-item">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
-            <div class="form-desc">*State:</div>
+            <div class="form-desc">
+                <p>*State:</p>
+                <img src="correct.png" alt="OK" class="form-img" id="state-i">
+            </div>
             <select name="State" class="form-item">
                 <option value="Florida">Florida</option>
                 <option value="California">California</option>
@@ -37,8 +49,10 @@
                 <option value="Iowa">Iowa</option>
                 <option value="Arizona">Arizona</option>
             </select>
-            <div class="form-desc">*Required Fields</div>
-            <input type="button" value="Submit!" id="form-button">
+            <div class="form-desc">
+                <p>*Required Fields</p>
+            </div>
+            <input type="button" value="Submit!" id="form-button" onClick="submitForm()">
         </form>
     </div>
 </body>
