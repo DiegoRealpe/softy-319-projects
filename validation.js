@@ -7,10 +7,10 @@ var imgYes = "correct.png";
 var imgNo = "wrong.png";
 var formIdArr = ['fname-', 'lname-', 'gender-', 'state-'];
 
-function submitForm() {
+function checkBasic() {
     let redirect = true;
     formIdArr.forEach(id => {
-        if(!checkFilled(id)){
+        if(!isFilled(id)){
             redirect = false;
         }
     });
@@ -19,7 +19,7 @@ function submitForm() {
     }
 }
 
-function checkFilled(name) {
+function isFilled(name) {
     document.getElementById(name + 'i').style.display="block";
     if(document.getElementById(name + 'f').value){
         document.getElementById(name + 'i').src=imgYes;

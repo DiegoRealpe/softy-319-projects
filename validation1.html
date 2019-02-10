@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Validation Form</title>
     <link rel="stylesheet" href="validation.css">
-    <script src="validation1.js"></script>
+    <script src="validation.js"></script>
 </head>
 
 <body>
@@ -20,13 +20,13 @@
                 <p>*Name:</p>
                 <img src="" alt="OK" class="form-img" id="fname-i">
             </div>
-            <input type="text" class="form-item" placeholder="Robert" id="fname-f">
+            <input type="text" class="form-item" placeholder="e.g. Robert" id="fname-f">
             
             <div class="form-desc">
                 <p>*Family Name:</p>
                 <img src="" alt="OK" class="form-img" id="lname-i">
             </div>
-            <input type="text" class="form-item" placeholder="Ross" id="lname-f">
+            <input type="text" class="form-item" placeholder="e.g. Ross" id="lname-f">
            
             <div class="form-desc">
                 <p>*Gender:</p>
@@ -59,7 +59,7 @@
             <div class="form-desc">
                 <p>*Required Fields</p>
             </div>
-            <input type="button" value="Continue" id="form-button" onClick="submitForm()">
+            <input type="button" value="Continue" id="form-button" onClick="checkBasic()">
         </form>
     </div>
 </body>
