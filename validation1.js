@@ -5,23 +5,27 @@
 
 var imgYes = "correct.png";
 var imgNo = "wrong.png";
+var formIdArr = ['fname-', 'lname-', 'gender-', 'state-'];
 
 function submitForm() {
-    checkFilled('fname-');
-    checkFilled('lname-');
-    checkSelected('gender-');
+    let redirect = true;
+    formIdArr.forEach(id => {
+        if(!checkFilled(id)){
+            redirect = false;
+        }
+    });
+    if(redirect){
+        alert("JUMPEEEEER");
+    }
 }
 
 function checkFilled(name) {
     document.getElementById(name + 'i').style.display="block";
     if(document.getElementById(name + 'f').value){
         document.getElementById(name + 'i').src=imgYes;
+        return true;
     }
-    else{
-        document.getElementById(name + 'i').src=imgNo;
-    }
-}
-
-function checkSelected(name){
-
+    document.getElementById(name + 'i').src=imgNo;
+    return false;
+    
 }

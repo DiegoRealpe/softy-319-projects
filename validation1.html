@@ -15,29 +15,35 @@
     <div class="form-frame">
         <div class="form-title">Validation Form</div>
         <form class="form-parent">
+            
             <div class="form-desc">
                 <p>*Name:</p>
                 <img src="" alt="OK" class="form-img" id="fname-i">
             </div>
             <input type="text" class="form-item" placeholder="Robert" id="fname-f">
+            
             <div class="form-desc">
                 <p>*Family Name:</p>
                 <img src="" alt="OK" class="form-img" id="lname-i">
             </div>
             <input type="text" class="form-item" placeholder="Ross" id="lname-f">
+           
             <div class="form-desc">
                 <p>*Gender:</p>
                 <img src="" alt="OK" class="form-img" id="gender-i">
             </div>
-            <select name="Gender" class="form-item">
+            <select name="Gender" class="form-item" id="gender-f">
+                <option value="" selected="selected">--Select Gender--</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
+
             <div class="form-desc">
                 <p>*State:</p>
                 <img src="" alt="OK" class="form-img" id="state-i">
             </div>
-            <select name="State" class="form-item">
+            <select name="State" class="form-item" id="state-f">
+                <option value="" selected="selected">--Select State--</option>
                 <option value="Florida">Florida</option>
                 <option value="California">California</option>
                 <option value="New York">New York</option>
@@ -49,10 +55,11 @@
                 <option value="Iowa">Iowa</option>
                 <option value="Arizona">Arizona</option>
             </select>
+
             <div class="form-desc">
                 <p>*Required Fields</p>
             </div>
-            <input type="button" value="Submit!" id="form-button" onClick="submitForm()">
+            <input type="button" value="Continue" id="form-button" onClick="submitForm()">
         </form>
     </div>
 </body>
