@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="validation.css">
     <script src="validation1.js"></script>
 </head>
+
 <body>
     <div class="header">
-        <div class="title">Salutations and Welcome to my Homework 2!</div>
+        <div class="title">Welcome to my Homework 2!</div>
     </div>
     <div class="form-frame">
-        <p>cool</p>
-        <form class="info-form">
-            <input type="text" placeholder="Robert">
-            <input type="text" placeholder="Ross">
-            <select name="Gender">
+        <div class="form-title">Validation Form</div>
+        <form class="form-parent">
+            <div class="form-desc">*Name:</div>
+            <input type="text" class="form-item" placeholder="Robert">
+            <div class="form-desc">*Family Name:</div>
+            <input type="text" class="form-item" placeholder="Ross">
+            <div class="form-desc">*Gender:</div>
+            <select name="Gender" class="form-item">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
-            <select name="State">
-                <option value="California">California</option>
+            <div class="form-desc">*State:</div>
+            <select name="State" class="form-item">
                 <option value="Florida">Florida</option>
+                <option value="California">California</option>
                 <option value="New York">New York</option>
                 <option value="Texas">Texas</option>
                 <option value="Hawaii">Hawaii</option>
@@ -31,8 +37,10 @@
                 <option value="Iowa">Iowa</option>
                 <option value="Arizona">Arizona</option>
             </select>
-            <input type="button">
+            <div class="form-desc">*Required Fields</div>
+            <input type="button" value="Submit!" id="form-button">
         </form>
     </div>
 </body>
+
 </html>
