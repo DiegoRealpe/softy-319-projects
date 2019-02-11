@@ -14,9 +14,11 @@ function checkBasic() {
             redirect = false;
         }
     });
-    if(redirect){
-        alert("JUMPEEEEER");
-    }
+    
+    setTimeout((redirect) => {
+        if(redirect)
+            window.location = "validation2.html";
+    }, 3000);
 }
 
 function isFilled(name) {
