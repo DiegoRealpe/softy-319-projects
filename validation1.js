@@ -14,11 +14,10 @@ function checkBasic() {
             redirect = false;
         }
     });
-    
-    setTimeout((redirect) => {
+    setTimeout(() => {
         if(redirect)
             window.location = "validation2.html";
-    }, 3000);
+    }, 1000);
 }
 
 function isFilled(name) {
