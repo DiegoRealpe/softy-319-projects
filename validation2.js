@@ -14,6 +14,10 @@ function submitAll(){
     let email = emailCheck();
     let phone  = phoneCheck();
     let addr = addressCheck();
+    if(email && phone && addr){
+        //HW PDF didn't state what to do or say if the inputs were valid so I throw an alert for good measure
+        alert("Verified!");
+    }
 }
 
 function emailCheck(){
