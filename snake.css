@@ -1,0 +1,20 @@
+html{
+    background-color: grey;
+}
+
+.buttonDock{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.button{
+    height: 30px;
+    width: 50px;
+}
+
+#snakecanvas{
+    width : "1650";
+    height : "1450";
+    border : 1px solid green;
+}
