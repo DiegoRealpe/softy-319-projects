@@ -1,15 +1,17 @@
 
-var myBtn = document.getElementById("btn");
-myBtn.onclick = function () {
-    // getContext() method returns an object that provides methods
-    // and properties for drawing on the canvas
-    var context = document.getElementById("canvasId").getContext("2d");
-    context.fillStyle = "#ffc821";
+var canvas = document.getElementById("snakecanvas");
+var brush = canvas.getContext("2d");
+brush.fillStyle = "#00FF00";
+var coorX = 0;
+var coorY = 250;
+//var Timer = setInterval()
 
-    //draw a rectangle at 20,20  with  width 150 and height 100
-    context.rect(20, 20, 150, 100);
+var leftTurn = document.getElementById("left");
+var rightTurn = document.getElementById("right");
+var move = document.getElementById("move");
 
-    //fill the rectangle
-    context.fill();
-}
-     //look at other canvas methods!
+
+
+/*move.onclick = function () {
+    console.log("Howdytyyy");
+}*/
