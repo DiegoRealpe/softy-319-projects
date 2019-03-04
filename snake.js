@@ -1,42 +1,43 @@
 
-var coorX = 0; //Initial coordinates
-var coorY = 250;
+const MAXRANGE = 500;
+const MINRANGE = 0;
 const North = { 'X': 0, 'Y': 10 }; //direction structs
 const East = { 'X': 10, 'Y': 0 };
 const South = { 'X': 0, 'Y': -10 };
 const West = { 'X': -10, 'Y': 0 };
+
+var Timer; //Timer variable!
+var coorX = 0; //Initial coordinates
+var coorY = 250;
 var direction = East;
 var brush = document.getElementById("snakecanvas").getContext("2d");// Canvas object
 brush.lineWidth = "5"; //line size and color
 brush.strokeStyle = "green";
 
-var Timer = setInterval()
-
 var leftTurn = document.getElementById("left"); //buttons
 var rightTurn = document.getElementById("right");
 var move = document.getElementById("move");
 
-/**function move() {
-    brush.beginPath();
-    brush.moveTo(coorX, coorY);
-    coorX += direction.X;
-    coorY += direction.Y;
-    brush.lineTo(coorX, coorY);
-    brush.stroke();
-}*/
-
-
-
 function play() {
-    if (Timer == NULL) {
-        Timer = setInterval(() => {
+    if (Timer == null) {
+        move.value = "Stop";
+        Timer = setInterval(function() {
+            if(coorX > MAXRANGE || coorY > MAXRANGE || coorX < MINRANGE || coorY < MINRANGE){
+                clearInterval(Timer);
+                move.value = "Start";
+                return;
+            }
             brush.beginPath();
             brush.moveTo(coorX, coorY);
             coorX += direction.X;
             coorY += direction.Y;
             brush.lineTo(coorX, coorY);
             brush.stroke();
-        }, 1000);
+        }, 300);
+    }
+    else{
+        clearInterval(Timer);
+        move.value = "Start";
     }
 }
 
