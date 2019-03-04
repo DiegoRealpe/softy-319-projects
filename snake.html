@@ -6,11 +6,11 @@
 
 <body>
     <canvas id="snakecanvas" width="500" height="500"></canvas>
-    <script type="text/javascript" src="./snake.js"></script>
     <div class="buttonDock">
-        <input id="left" class="button" type="button" value="Left" />
-        <input id="move" class="button" type="button" value="Start" />
-        <input id="right" class="button" type="button" value="Right" />
+        <input id="left" class="button" type="button" value="Left" onclick="turnLeft()"/>
+        <input id="move" class="button" type="button" value="Start" onclick="play()" />
+        <input id="right" class="button" type="button" value="Right" onclick="turnRight()"/>
     </div>
+    <script type="text/javascript" src="./snake.js"></script>
 </body>
 </html>
