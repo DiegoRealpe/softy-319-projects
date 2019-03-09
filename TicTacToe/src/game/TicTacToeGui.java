@@ -22,6 +22,15 @@ public class TicTacToeGui extends Application {
 		primaryStage.setResizable(false);
 		
 		TicTacToeGame game = new TicTacToeGame();
+		Button[][] tileArray = new Button[3][3];
+		for (int i = 0; i < tileArray.length; i++) {
+			for (int j = 0; j < tileArray.length; j++) {
+				Button temp = new Button();
+				temp.setLayoutX(i*100);
+				temp.setLayoutY(j*100);
+				tileArray[i][j] = temp;
+			}
+		}
 		
 		
         Button btn = new Button();

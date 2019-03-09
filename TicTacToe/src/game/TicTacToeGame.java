@@ -52,7 +52,7 @@ public class TicTacToeGame {
 	/**
 	 * Scans for a win scenario and if so adds the score of that player and resets
 	 */
-	public void checkOver() {
+	private void checkOver() {
 		// Couldn't really think of better optimized version of this
 		// Check both rows and cols
 		for (int i = 0; i < TileGrid.length; i++) {
@@ -85,7 +85,7 @@ public class TicTacToeGame {
 	/**
 	 * Switch control to the next player
 	 */
-	public void switchTurn() {
+	private void switchTurn() {
 		CurrentTurn = (CurrentTurn == Symbol.CIRCLE) ? (Symbol.CROSS) : (Symbol.CIRCLE);
 	}
 
