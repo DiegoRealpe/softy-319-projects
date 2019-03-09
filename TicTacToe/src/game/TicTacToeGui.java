@@ -1,4 +1,4 @@
-package gui;
+package game;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -17,9 +17,11 @@ public class TicTacToeGui extends Application {
 	@Override
 	public void start(Stage primaryStage) {
         StackPane root = new StackPane();
-        primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.setScene(new Scene(root, 800, 800));
 		primaryStage.setTitle("Tic-Tac-Toe");
 		primaryStage.setResizable(false);
+		
+		TicTacToeGame game = new TicTacToeGame();
 		
 		
         Button btn = new Button();
@@ -31,6 +33,8 @@ public class TicTacToeGui extends Application {
             	System.out.println("Hello World!");
             }
         });
+        
+        
         
         root.getChildren().add(btn);
         primaryStage.show();
