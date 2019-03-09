@@ -45,6 +45,7 @@ public class TicTacToeGame {
 			checkOver();
 			if (!Over) {
 				switchTurn();
+				System.out.println("this is:" + row + col);
 			}
 		}
 	}
@@ -55,7 +56,7 @@ public class TicTacToeGame {
 	private void checkOver() {
 		// Couldn't really think of better optimized version of this
 		// Check both rows and cols
-		for (int i = 0; i < TileGrid.length; i++) {
+		/*for (int i = 0; i < TileGrid.length; i++) {
 			if ((TileGrid[i][0] == TileGrid[i][1] && TileGrid[i][1] == TileGrid[i][2])
 					|| (TileGrid[0][i] == TileGrid[1][i] && TileGrid[1][i] == TileGrid[2][i])) {
 				Over = true;
@@ -79,7 +80,7 @@ public class TicTacToeGame {
 				}
 			}
 			//Keep turn of the winning player, they start next round
-		}
+		}*/
 	}
 
 	/**
