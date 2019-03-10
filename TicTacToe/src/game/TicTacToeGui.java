@@ -35,42 +35,39 @@ public class TicTacToeGui extends Application {
 		primaryStage.setResizable(false);
 		ObservableList<Node> rootList = root.getChildren();
 
-		// Put a top bar with stuff on it
 		HBox topBar = new HBox(10);
 		topBar.setPadding(new Insets(15, 12, 15, 12));
 		topBar.setSpacing(10);
 		topBar.setStyle("-fx-background-color: #336699;");
 
-		//Set Turn and scoreboard
-		/**Text turnLabel = new Text();
+		// Set Turn and scoreboard texts
+		Text turnLabel = new Text();
 		turnLabel.setText(game.getTurn());
-		
+		topBar.getChildren().add(turnLabel);
+
 		Text scoreO = new Text();
-		turnLabel.setText(game.getTurn(Symbol.CIRCLE));
-		
+		scoreO.setText("" + game.getScore(Symbol.CIRCLE));
+		topBar.getChildren().add(scoreO);
+
 		Text scoreX = new Text();
-		turnLabel.setText(game.getScore(Symbol.CROSS));*/
-		
+		scoreX.setText("" + game.getScore(Symbol.CROSS));
+		topBar.getChildren().add(scoreX);
+
 		// Set reset button
-		Button buttonRes = new Button("Play Again!");
+		Button buttonRes = new Button("Go Again?");
 		buttonRes.setPrefSize(100, 20);
 		buttonRes.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				game.reset();
+				scoreO.setText("" + game.getScore(Symbol.CIRCLE));
+				scoreX.setText("" + game.getScore(Symbol.CROSS));
 			}
 		});
 		topBar.getChildren().add(buttonRes);
 		rootList.add(topBar);
 
-		// set tiles and behavior
-		initTiles(rootList);
-
-		primaryStage.show();
-	}
-
-	public void initTiles(ObservableList<Node> rootList) {
-		// Making tile buttons
+		//Initializing tile buttons
 		Button[][] tileArray = new Button[3][3];
 		for (int i = 0; i < tileArray.length; i++) {
 			HBox rowHold = new HBox(10);
@@ -102,6 +99,7 @@ public class TicTacToeGui extends Application {
 							I.setFitWidth(280);
 							tile.setGraphic(I);
 						}
+						turnLabel.setText("Current Turn: " + game.getTurn());
 					}
 				}.init(i, j));
 
@@ -110,6 +108,9 @@ public class TicTacToeGui extends Application {
 			}
 			rootList.add(rowHold);
 		}
+
+		primaryStage.show();
 	}
+
 
 }

@@ -106,6 +106,16 @@ public class TicTacToeGame {
 	public Symbol getTile(int row, int col) {
 		return TileGrid[row][col];
 	}
+	
+	public String getTurn() {
+		if(CurrentTurn == Symbol.CROSS) {
+			return "Cross";
+		}
+		else if(CurrentTurn == Symbol.CIRCLE){
+			return "Circle";
+		}
+		return "Nobody";
+	}
 
 	/**
 	 * Score getter for the player scores
