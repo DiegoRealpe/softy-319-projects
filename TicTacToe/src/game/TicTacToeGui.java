@@ -12,9 +12,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class TicTacToeGui extends Application {
+
+	private TicTacToeGame game = new TicTacToeGame();
+	private final Image Ex = new Image(getClass().getResourceAsStream("../x.jpg"));
+	private final Image Oh = new Image(getClass().getResourceAsStream("../o.jpg"));
 
 	public static void main(String[] args) {
 		launch(args);
@@ -22,14 +27,50 @@ public class TicTacToeGui extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+
 		VBox root = new VBox(10);
 		root.setPadding(new Insets(20));
-		primaryStage.setScene(new Scene(root, 1000, 1000));
+		primaryStage.setScene(new Scene(root, 950, 1000));
 		primaryStage.setTitle("Tic-Tac-Toe");
 		primaryStage.setResizable(false);
 		ObservableList<Node> rootList = root.getChildren();
 
-		TicTacToeGame game = new TicTacToeGame();
+		// Put a top bar with stuff on it
+		HBox topBar = new HBox(10);
+		topBar.setPadding(new Insets(15, 12, 15, 12));
+		topBar.setSpacing(10);
+		topBar.setStyle("-fx-background-color: #336699;");
+
+		//Set Turn and scoreboard
+		/**Text turnLabel = new Text();
+		turnLabel.setText(game.getTurn());
+		
+		Text scoreO = new Text();
+		turnLabel.setText(game.getTurn(Symbol.CIRCLE));
+		
+		Text scoreX = new Text();
+		turnLabel.setText(game.getScore(Symbol.CROSS));*/
+		
+		// Set reset button
+		Button buttonRes = new Button("Play Again!");
+		buttonRes.setPrefSize(100, 20);
+		buttonRes.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				game.reset();
+			}
+		});
+		topBar.getChildren().add(buttonRes);
+		rootList.add(topBar);
+
+		// set tiles and behavior
+		initTiles(rootList);
+
+		primaryStage.show();
+	}
+
+	public void initTiles(ObservableList<Node> rootList) {
+		// Making tile buttons
 		Button[][] tileArray = new Button[3][3];
 		for (int i = 0; i < tileArray.length; i++) {
 			HBox rowHold = new HBox(10);
@@ -47,20 +88,20 @@ public class TicTacToeGui extends Application {
 
 					@Override
 					public void handle(ActionEvent event) {
-						Image symbol;
-						ImageView I;
+						Image symbol = null;
 						game.claimTile(row, col);
 						if (game.getTile(row, col) == Symbol.CROSS) {
-							symbol = new Image(getClass().getResourceAsStream("../x.jpg"));
+							symbol = Ex;
 						} else if (game.getTile(row, col) == Symbol.CIRCLE) {
-							symbol = new Image(getClass().getResourceAsStream("../o.jpg"));
+							symbol = Oh;
 						}
 						Button tile = (Button) event.getSource();
-						if(symbol)
-							I = new ImageView(symbol);
-						I.setFitHeight(280);
-						I.setFitWidth(280);
-						tile.setGraphic(I);
+						if (symbol != null) {
+							ImageView I = new ImageView(symbol);
+							I.setFitHeight(280);
+							I.setFitWidth(280);
+							tile.setGraphic(I);
+						}
 					}
 				}.init(i, j));
 
@@ -69,8 +110,6 @@ public class TicTacToeGui extends Application {
 			}
 			rootList.add(rowHold);
 		}
-
-		primaryStage.show();
 	}
 
 }

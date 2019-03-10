@@ -47,7 +47,6 @@ public class TicTacToeGame {
 			checkOver();
 			if (!Over) {
 				switchTurn();
-				System.out.println("this is:" + row + col);
 			}
 		}
 	}
@@ -71,6 +70,16 @@ public class TicTacToeGame {
 						&& TileGrid[0][2] != Symbol.EMPTY)) {
 			Over = true;
 		}
+	}
+
+	/**
+	 * Switch control to the next player
+	 */
+	private void switchTurn() {
+		CurrentTurn = (CurrentTurn == Symbol.CIRCLE) ? (Symbol.CROSS) : (Symbol.CIRCLE);
+	}
+	
+	public void reset() {
 		if (Over) {
 			if (CurrentTurn == Symbol.CROSS) {
 				++CircleScore;
@@ -83,14 +92,8 @@ public class TicTacToeGame {
 				}
 			}
 			// Keep turn of the winning player, they start next round
+			Over = false;
 		}
-	}
-
-	/**
-	 * Switch control to the next player
-	 */
-	private void switchTurn() {
-		CurrentTurn = (CurrentTurn == Symbol.CIRCLE) ? (Symbol.CROSS) : (Symbol.CIRCLE);
 	}
 
 	/**
