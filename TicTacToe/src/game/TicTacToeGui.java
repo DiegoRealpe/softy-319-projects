@@ -71,7 +71,7 @@ public class TicTacToeGui extends Application {
 		topBar.getChildren().add(buttonRes);
 		rootList.add(topBar);
 
-		//Initializing tile buttons
+		// Initializing tile buttons
 		tileArray = new Button[3][3];
 		for (int i = 0; i < tileArray.length; i++) {
 			HBox rowHold = new HBox(10);
@@ -103,7 +103,15 @@ public class TicTacToeGui extends Application {
 							I.setFitWidth(280);
 							tile.setGraphic(I);
 						}
-						turnLabel.setText("Current Turn: " + game.getTurn());
+						if (game.isOver()) {
+							if (game.wasWon()) {
+								turnLabel.setText("Congratulations " + game.getTurn() + " won!!!");
+							} else {
+								turnLabel.setText("Draw!");
+							}
+						} else {
+							turnLabel.setText("Current Turn: " + game.getTurn());
+						}
 						scoreX.setText("X Score: " + game.getScore(Symbol.CROSS));
 						scoreO.setText("O Score: " + game.getScore(Symbol.CIRCLE));
 					}
@@ -117,6 +125,5 @@ public class TicTacToeGui extends Application {
 
 		primaryStage.show();
 	}
-
 
 }

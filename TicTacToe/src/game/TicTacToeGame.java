@@ -20,6 +20,7 @@ public class TicTacToeGame {
 	private int CrossScore;
 	private int CircleScore;
 	private boolean Over;
+	private boolean Won;
 
 	/**
 	 * Default constructor
@@ -45,7 +46,7 @@ public class TicTacToeGame {
 		}
 		TileGrid[row][col] = CurrentTurn;
 		checkOver();
-		if (!Over) { //switch turn
+		if (!Over) { // switch turn
 			CurrentTurn = (CurrentTurn == Symbol.CIRCLE) ? (Symbol.CROSS) : (Symbol.CIRCLE);
 		}
 	}
@@ -55,22 +56,40 @@ public class TicTacToeGame {
 	 */
 	private void checkOver() {
 		// Couldn't really think of better optimized version of this
-		// Check both rows and cols
-
-		for (int i = 0; i < 3; i++) {
-			if ((TileGrid[i][0] == TileGrid[i][1] && TileGrid[i][1] == TileGrid[i][2] && TileGrid[i][2] != Symbol.EMPTY)
-					|| (TileGrid[0][i] == TileGrid[1][i] && TileGrid[1][i] == TileGrid[2][i]
-							&& TileGrid[2][i] != Symbol.EMPTY)) {
-				Over = true;
-				increaseScore(CurrentTurn);
-			}
-		}
 		// diagonal checking
 		if ((TileGrid[0][0] == TileGrid[1][1] && TileGrid[1][1] == TileGrid[2][2] && TileGrid[2][2] != Symbol.EMPTY)
 				|| (TileGrid[0][2] == TileGrid[1][1] && TileGrid[1][1] == TileGrid[2][0]
 						&& TileGrid[0][2] != Symbol.EMPTY)) {
 			Over = true;
+			Won = true;
 			increaseScore(CurrentTurn);
+			return;
+		}
+
+		// Check both rows and cols
+		for (int i = 0; i < 3; i++) {
+			if ((TileGrid[i][0] == TileGrid[i][1] && TileGrid[i][1] == TileGrid[i][2] && TileGrid[i][2] != Symbol.EMPTY)
+					|| (TileGrid[0][i] == TileGrid[1][i] && TileGrid[1][i] == TileGrid[2][i]
+							&& TileGrid[2][i] != Symbol.EMPTY)) {
+				Over = true;
+				Won = true;
+				increaseScore(CurrentTurn);
+				return;
+			}
+		}
+		
+		int smallCounter = 0;
+		//terrible runtime I know, but that was not a requirement and I am tired
+		for (int i = 0; i < TileGrid.length; i++) {
+			for (int j = 0; j < TileGrid.length; j++) {
+				if(TileGrid[i][j] == Symbol.EMPTY) {
+					++smallCounter;
+				}
+			}
+		}
+		if(smallCounter == 0) {
+			Over = true;
+			Won = false;
 		}
 	}
 
@@ -82,6 +101,9 @@ public class TicTacToeGame {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public void reset() {
 		for (int i = 0; i < TileGrid.length; i++) {
 			for (int j = 0; j < TileGrid.length; j++) {
@@ -90,6 +112,7 @@ public class TicTacToeGame {
 		}
 		// Keep turn of the winning player, they start next round
 		Over = false;
+		Won = false;
 	}
 
 	/**
@@ -103,6 +126,11 @@ public class TicTacToeGame {
 		return TileGrid[row][col];
 	}
 
+	/**
+	 * Which turn is it?
+	 * 
+	 * @return
+	 */
 	public String getTurn() {
 		if (CurrentTurn == Symbol.CROSS) {
 			return "Cross";
@@ -125,5 +153,18 @@ public class TicTacToeGame {
 			return CrossScore;
 		}
 		return -1;
+	}
+
+	/**
+	 * returns staye of the game
+	 * 
+	 * @return
+	 */
+	public boolean isOver() {
+		return Over;
+	}
+	
+	public boolean wasWon() {
+		return Won;
 	}
 }
