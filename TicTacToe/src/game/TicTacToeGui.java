@@ -20,6 +20,7 @@ public class TicTacToeGui extends Application {
 	private TicTacToeGame game = new TicTacToeGame();
 	private final Image Ex = new Image(getClass().getResourceAsStream("../x.jpg"));
 	private final Image Oh = new Image(getClass().getResourceAsStream("../o.jpg"));
+	private Button[][] tileArray;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -60,15 +61,18 @@ public class TicTacToeGui extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				game.reset();
-				scoreO.setText("" + game.getScore(Symbol.CIRCLE));
-				scoreX.setText("" + game.getScore(Symbol.CROSS));
+				for (int i = 0; i < tileArray.length; i++) {
+					for (int j = 0; j < tileArray.length; j++) {
+						tileArray[i][j].setGraphic(null);
+					}
+				}
 			}
 		});
 		topBar.getChildren().add(buttonRes);
 		rootList.add(topBar);
 
 		//Initializing tile buttons
-		Button[][] tileArray = new Button[3][3];
+		tileArray = new Button[3][3];
 		for (int i = 0; i < tileArray.length; i++) {
 			HBox rowHold = new HBox(10);
 			for (int j = 0; j < tileArray.length; j++) {
@@ -100,6 +104,8 @@ public class TicTacToeGui extends Application {
 							tile.setGraphic(I);
 						}
 						turnLabel.setText("Current Turn: " + game.getTurn());
+						scoreX.setText("" + game.getScore(Symbol.CROSS));
+						scoreO.setText("" + game.getScore(Symbol.CIRCLE));
 					}
 				}.init(i, j));
 

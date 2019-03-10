@@ -39,16 +39,16 @@ public class TicTacToeGame {
 	 * @param col
 	 */
 	public void claimTile(int row, int col) {
-		if (row > 2 || col > 2 || Over) {
+		if (row > 2 || col > 2 || Over || TileGrid[row][col] != Symbol.EMPTY) {
+			System.out.println("My sensors indicate game is over");
 			return;
 		}
-		if (TileGrid[row][col] == Symbol.EMPTY) {
-			TileGrid[row][col] = CurrentTurn;
-			checkOver();
-			if (!Over) {
-				switchTurn();
-			}
+		TileGrid[row][col] = CurrentTurn;
+		checkOver();
+		if (!Over) { //switch turn
+			CurrentTurn = (CurrentTurn == Symbol.CIRCLE) ? (Symbol.CROSS) : (Symbol.CIRCLE);
 		}
+
 	}
 
 	/**
@@ -62,6 +62,7 @@ public class TicTacToeGame {
 					|| (TileGrid[0][i] == TileGrid[1][i] && TileGrid[1][i] == TileGrid[2][i]
 							&& TileGrid[i][2] != Symbol.EMPTY)) {
 				Over = true;
+				increaseScore(CurrentTurn);
 			}
 		}
 		// diagonal checking
@@ -69,31 +70,26 @@ public class TicTacToeGame {
 				|| (TileGrid[0][2] == TileGrid[1][1] && TileGrid[1][1] == TileGrid[2][0]
 						&& TileGrid[0][2] != Symbol.EMPTY)) {
 			Over = true;
+			increaseScore(CurrentTurn);
 		}
 	}
 
-	/**
-	 * Switch control to the next player
-	 */
-	private void switchTurn() {
-		CurrentTurn = (CurrentTurn == Symbol.CIRCLE) ? (Symbol.CROSS) : (Symbol.CIRCLE);
-	}
-	
-	public void reset() {
-		if (Over) {
-			if (CurrentTurn == Symbol.CROSS) {
-				++CircleScore;
-			} else if (CurrentTurn == Symbol.CIRCLE) {
-				++CrossScore;
-			}
-			for (int i = 0; i < TileGrid.length; i++) {
-				for (int j = 0; j < TileGrid.length; j++) {
-					TileGrid[i][j] = Symbol.EMPTY;
-				}
-			}
-			// Keep turn of the winning player, they start next round
-			Over = false;
+	private void increaseScore(Symbol team) {
+		if (team == Symbol.CROSS && Over) {
+			++CircleScore;
+		} else if (team == Symbol.CIRCLE && Over) {
+			++CrossScore;
 		}
+	}
+
+	public void reset() {
+		for (int i = 0; i < TileGrid.length; i++) {
+			for (int j = 0; j < TileGrid.length; j++) {
+				TileGrid[i][j] = Symbol.EMPTY;
+			}
+		}
+		// Keep turn of the winning player, they start next round
+		Over = false;
 	}
 
 	/**
@@ -106,12 +102,11 @@ public class TicTacToeGame {
 	public Symbol getTile(int row, int col) {
 		return TileGrid[row][col];
 	}
-	
+
 	public String getTurn() {
-		if(CurrentTurn == Symbol.CROSS) {
+		if (CurrentTurn == Symbol.CROSS) {
 			return "Cross";
-		}
-		else if(CurrentTurn == Symbol.CIRCLE){
+		} else if (CurrentTurn == Symbol.CIRCLE) {
 			return "Circle";
 		}
 		return "Nobody";
