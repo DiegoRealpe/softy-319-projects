@@ -6,6 +6,7 @@ enum Symbol {
 
 /**
  * Diego's super cool TicTacToe game that he programmed because engineering!
+ * 
  * @author Diego's Beloved PC
  *
  */
@@ -33,6 +34,7 @@ public class TicTacToeGame {
 
 	/**
 	 * Play a turn of TTT
+	 * 
 	 * @param row
 	 * @param col
 	 */
@@ -49,29 +51,30 @@ public class TicTacToeGame {
 			}
 		}
 	}
-	
+
 	/**
 	 * Scans for a win scenario and if so adds the score of that player and resets
 	 */
 	private void checkOver() {
 		// Couldn't really think of better optimized version of this
 		// Check both rows and cols
-		/*for (int i = 0; i < TileGrid.length; i++) {
-			if ((TileGrid[i][0] == TileGrid[i][1] && TileGrid[i][1] == TileGrid[i][2])
-					|| (TileGrid[0][i] == TileGrid[1][i] && TileGrid[1][i] == TileGrid[2][i])) {
+		for (int i = 0; i < 3; i++) {
+			if ((TileGrid[i][0] == TileGrid[i][1] && TileGrid[i][1] == TileGrid[i][2] && TileGrid[i][2] != Symbol.EMPTY)
+					|| (TileGrid[0][i] == TileGrid[1][i] && TileGrid[1][i] == TileGrid[2][i]
+							&& TileGrid[i][2] != Symbol.EMPTY)) {
 				Over = true;
 			}
 		}
-		//diagonal checking
-		if((TileGrid[0][0] == TileGrid[1][1] && TileGrid[1][1] == TileGrid[2][2])
-				|| (TileGrid[0][3] == TileGrid[1][1] && TileGrid[1][1] == TileGrid[3][0])) {
+		// diagonal checking
+		if ((TileGrid[0][0] == TileGrid[1][1] && TileGrid[1][1] == TileGrid[2][2] && TileGrid[2][2] != Symbol.EMPTY)
+				|| (TileGrid[0][2] == TileGrid[1][1] && TileGrid[1][1] == TileGrid[2][0]
+						&& TileGrid[0][2] != Symbol.EMPTY)) {
 			Over = true;
 		}
-		if(Over) {
-			if(CurrentTurn == Symbol.CROSS) {
+		if (Over) {
+			if (CurrentTurn == Symbol.CROSS) {
 				++CircleScore;
-			}
-			else if(CurrentTurn == Symbol.CIRCLE) {
+			} else if (CurrentTurn == Symbol.CIRCLE) {
 				++CrossScore;
 			}
 			for (int i = 0; i < TileGrid.length; i++) {
@@ -79,8 +82,8 @@ public class TicTacToeGame {
 					TileGrid[i][j] = Symbol.EMPTY;
 				}
 			}
-			//Keep turn of the winning player, they start next round
-		}*/
+			// Keep turn of the winning player, they start next round
+		}
 	}
 
 	/**
@@ -92,6 +95,7 @@ public class TicTacToeGame {
 
 	/**
 	 * Getter for each of the TTT cells
+	 * 
 	 * @param row
 	 * @param col
 	 * @return
@@ -102,6 +106,7 @@ public class TicTacToeGame {
 
 	/**
 	 * Score getter for the player scores
+	 * 
 	 * @param Team
 	 * @return
 	 */

@@ -35,9 +35,7 @@ public class TicTacToeGui extends Application {
 			HBox rowHold = new HBox(10);
 			for (int j = 0; j < tileArray.length; j++) {
 				Button temp = new Button();
-
 				temp.setMinSize(300, 300);
-
 				temp.setOnAction(new EventHandler<ActionEvent>() {
 					private int row, col;
 
@@ -50,14 +48,16 @@ public class TicTacToeGui extends Application {
 					@Override
 					public void handle(ActionEvent event) {
 						Image symbol;
+						ImageView I;
 						game.claimTile(row, col);
 						if (game.getTile(row, col) == Symbol.CROSS) {
 							symbol = new Image(getClass().getResourceAsStream("../x.jpg"));
-						} else {
+						} else if (game.getTile(row, col) == Symbol.CIRCLE) {
 							symbol = new Image(getClass().getResourceAsStream("../o.jpg"));
 						}
 						Button tile = (Button) event.getSource();
-						ImageView I = new ImageView(symbol);
+						if(symbol)
+							I = new ImageView(symbol);
 						I.setFitHeight(280);
 						I.setFitWidth(280);
 						tile.setGraphic(I);
