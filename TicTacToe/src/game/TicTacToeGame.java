@@ -41,10 +41,9 @@ public class TicTacToeGame {
 	 */
 	public void claimTile(int row, int col) {
 		if (row > 2 || col > 2 || Over || TileGrid[row][col] != Symbol.EMPTY) {
-			System.out.println("My sensors indicate game is over");
 			return;
 		}
-		TileGrid[row][col] = CurrentTurn;
+		TileGrid[row][col] = CurrentTurn; //Cell gets claimed by whoever turn it is
 		checkOver();
 		if (!Over) { // switch turn
 			CurrentTurn = (CurrentTurn == Symbol.CIRCLE) ? (Symbol.CROSS) : (Symbol.CIRCLE);
