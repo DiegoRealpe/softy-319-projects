@@ -48,7 +48,6 @@ public class TicTacToeGame {
 		if (!Over) { //switch turn
 			CurrentTurn = (CurrentTurn == Symbol.CIRCLE) ? (Symbol.CROSS) : (Symbol.CIRCLE);
 		}
-
 	}
 
 	/**
@@ -57,10 +56,11 @@ public class TicTacToeGame {
 	private void checkOver() {
 		// Couldn't really think of better optimized version of this
 		// Check both rows and cols
+
 		for (int i = 0; i < 3; i++) {
 			if ((TileGrid[i][0] == TileGrid[i][1] && TileGrid[i][1] == TileGrid[i][2] && TileGrid[i][2] != Symbol.EMPTY)
 					|| (TileGrid[0][i] == TileGrid[1][i] && TileGrid[1][i] == TileGrid[2][i]
-							&& TileGrid[i][2] != Symbol.EMPTY)) {
+							&& TileGrid[2][i] != Symbol.EMPTY)) {
 				Over = true;
 				increaseScore(CurrentTurn);
 			}

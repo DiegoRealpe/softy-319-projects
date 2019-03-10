@@ -104,8 +104,8 @@ public class TicTacToeGui extends Application {
 							tile.setGraphic(I);
 						}
 						turnLabel.setText("Current Turn: " + game.getTurn());
-						scoreX.setText("" + game.getScore(Symbol.CROSS));
-						scoreO.setText("" + game.getScore(Symbol.CIRCLE));
+						scoreX.setText("X Score: " + game.getScore(Symbol.CROSS));
+						scoreO.setText("O Score: " + game.getScore(Symbol.CIRCLE));
 					}
 				}.init(i, j));
 
